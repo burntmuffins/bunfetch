@@ -4,7 +4,7 @@ bnuuy
 
 ## credits
 - thanks to [gfetch](https://github.com/arwn/gfetch) for inspiration
-- thanks to [John1024](https://stackoverflow.com/a/28353785) for the obnoxiously long code to fetch uptime
+- thanks to [John1024](https://stackoverflow.com/a/28353785) for the obnoxiously long command to fetch uptime
 
 ## notes
 - install `sed` if you don't have it
