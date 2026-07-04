@@ -1,0 +1,62 @@
+#!/bin/sh
+## loads of stolen code
+
+# where to source output
+output="$HOME/.config/bunfetch/output.sh"
+
+# suppress errors
+exec 2>/dev/null
+
+os=$(. /etc/os-release && echo ${NAME})
+arch=$(uname -m)
+kernel=$(uname -r)
+
+# got this from https://stackoverflow.com/a/28353785
+# thanks John1024
+uptime=$(uptime | sed -E 's/^[^,]*up *//; s/, *[[:digit:]]* users?.*//; s/min/mins/; s/([[:digit:]]+):0?([[:digit:]]+)/\1 hours, \2 mins/')
+
+ram_used=$(free -m | awk 'NR==2{printf $3}')
+ram_total=$(free -m | awk 'NR==2{printf $2}')
+
+cpu=$(grep "model name" /proc/cpuinfo | head -1 | cut -d ':' -f2 | sed 's/ //;s/(tm)//')
+
+shell=$SHELL
+# uncomment for full shell path instead of just exec name
+#shell=$(basename ${SHELL})
+
+disk_used=$(df -h / | awk 'NR==2 {printf $3}' | sed 's/G//')
+disk_total=$(df -h / | awk 'NR==2 {printf $2}' | sed 's/G//')
+# root partition's file system
+fs=$(df -T / | awk 'NR==2 {printf $2}')
+
+hostname=$(cat /etc/hostname)
+
+if [ "$@" = "--moo" ]; then
+	echo mooooo
+elif [ "$@" = "--meow" ]; then
+	echo mrrp meoww
+else
+### the output
+	until [ -e $output ]; do
+		mkdir -p $(dirname $output)
+		cat <<\EOF > $output
+cat <<EOC
+
+     .(\/),
+    (   'x')
+   @(      )
+     \`-, uu
+
+os   $os $arch
+krn  $kernel
+shl  $shell
+upt  $uptime
+ram  $ram_used/$ram_total MiB
+cpu  $cpu
+dsk  $disk_used/$disk_total GiB - $fs
+
+EOC
+EOF
+	done
+	. $output
+fi
