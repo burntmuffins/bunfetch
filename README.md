@@ -14,3 +14,4 @@ in it, you can customize how the output of the script looks like. <br>
 ## notes
 - install `sed` if you don't have it
 - not guaranteed to work on all linux distros
+- no. this is not a `bash` script, it should work with most posix shell
