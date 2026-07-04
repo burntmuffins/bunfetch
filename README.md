@@ -1,13 +1,11 @@
-# alpine fetch
-a gfetch clone but for linux, it fetches some information about your system, <br>
-it is named "alpine fetch" because it was originally written in alpine linux
-<img width="543" height="339" alt="afetch" src="https://github.com/user-attachments/assets/63035e20-50c0-4501-ba10-c7eefc2dd2c6" />
+# bunfetch
+<img width="293" height="252" alt="2026-07-04 10-51-05" src="https://github.com/user-attachments/assets/84735518-3ed6-4574-a1aa-f152024ad288" /> <br>
+bnuuy
 
-## note
-- this should work on **most** linux distributions.
-- all credit shall go to https://github.com/arwn/gfetch & https://dev.to/beta_shorts_7f1150259405a/building-a-system-information-fetch-tool-in-bash-56h0
+## credits
+- thanks to [gfetch](https://github.com/arwn/gfetch) for inspiration
+- thanks to [John1024](https://stackoverflow.com/a/28353785) for the obnoxiously long code to fetch uptime
 
-## dependencies
-dependencies needed to run this script:
-- sed
-- xdpyinfo
+## notes
+- install `sed` if you don't have it
+- not guaranteed to work on all linux distros
